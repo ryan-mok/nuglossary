@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
   def index
-    render html: "Please use /webhook"
+    render html: "<iframe width=\"350\" height=\"430\" src=\"https://console.dialogflow.com/api-client/demo/embedded/nuglossary\"></iframe>"
   end
 end
