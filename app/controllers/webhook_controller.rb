@@ -4,14 +4,14 @@ class WebhookController < ApplicationController
     
     request_object = JSON.parse request.body.read
 
-    intent = request_object.result.metadata.intentName
-    parameters = request_object.result.parameters
+    intent = request_object["result"]["metadata"]["intentName"]
+    parameters = request_object["result"]["parameters"]
 
     response = ""
 
     case intent
     when "glossary_lookup"
-      nu_lookupTerm = parameters.nu_lookupTerm
+      nu_lookupTerm = parameters["nu_lookupTerm"]
       response = "#{nu_lookupTerm} is short for #{"some new term"}."
     end
     
