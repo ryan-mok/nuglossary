@@ -12,7 +12,7 @@ class WebhookController < ApplicationController
     case intent
     when "glossary_lookup"
       nu_lookupTerm = parameters["nu_lookupTerm"]
-      dictionary = JSON.parse File.read("./acronyms.json")
+      dictionary = JSON.parse File.read("../models/acronyms.json")
       full_term = dictionary["#{nu_lookupTerm}"]
       response = "#{nu_lookupTerm} is short for #{full_term}."
     end
