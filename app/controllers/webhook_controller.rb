@@ -25,6 +25,7 @@ class WebhookController < ApplicationController
       p wikipedia["SearchSuggestion"]["Section"]["Item"]["Description"]
 
       response = "#{nu_lookupTerm} is short for #{full_term}."
+      response += "According to Wikipedia, #{wikipedia}" if wikipedia.present?
     end
     
     render json: {
