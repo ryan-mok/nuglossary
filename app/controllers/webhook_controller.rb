@@ -22,7 +22,7 @@ class WebhookController < ApplicationController
       )
       wikipedia = JSON.parse wikipedia_json
 
-      p wikipedia
+      p wikipedia[0][1]
 
       response = "#{nu_lookupTerm} is short for #{full_term}."
     end
