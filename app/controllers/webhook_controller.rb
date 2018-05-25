@@ -4,7 +4,9 @@ class WebhookController < ApplicationController
       :client_access_token => ENV['API_ACCESS_TOKEN']
     )
 
-    p response = client.text_request "hello!"
+    response = client.text_request "hello!"
+
+    p response
 
     render json: response
   end
