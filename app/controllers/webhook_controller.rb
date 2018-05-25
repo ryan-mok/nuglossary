@@ -1,6 +1,6 @@
 class WebhookController < ApplicationController
   def webhook
-    render status: 401 unless request.headers["Authorization"] == ENV["API_ACCESS_KEY"]
+    render :file => "public/401.html", :status => :unauthorized unless request.headers["Authorization"] == ENV["API_ACCESS_KEY"]
     
     request_object = JSON.parse request.body.read
 
