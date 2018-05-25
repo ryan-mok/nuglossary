@@ -25,7 +25,7 @@ class WebhookController < ApplicationController
       wikipedia_text = wikipedia_hash["SearchSuggestion"] && wikipedia_hash["SearchSuggestion"]["Section"] && wikipedia_hash["SearchSuggestion"]["Section"]["Item"]["Description"] if wikipedia_hash.present?
 
       response = "#{nu_lookupTerm} is short for #{full_term}."
-      response += "\nAccording to Wikipedia: #{wikipedia_text}" if wikipedia_text.present?
+      response += "\nAccording to Wikipedia: #{wikipedia_text}" if wikipedia_text.present? && full_term != "PackManager"
     end
     
     render json: {
