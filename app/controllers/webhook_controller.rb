@@ -1,7 +1,5 @@
-class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
-
+class WebhookController < ApplicationController
   def webhook
-    render html: "Welcome to webhook"
+    render html: "This is the webhook"
   end
 end
