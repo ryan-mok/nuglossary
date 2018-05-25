@@ -16,12 +16,13 @@ class WebhookController < ApplicationController
       dictionary = JSON.parse File.read("app/models/acronyms.json")
       full_term = dictionary["#{nu_lookupTerm}"]
 
-      wikipedia = RestClient::Request.execute(
+      wikipedia_xml = RestClient::Request.execute(
         method: :get,
-        url: "https://en.wikipedia.org/w/api.php?action=opensearch&search=#{full_term}&limit=1&format=json"
-      ).to_s
+        url: "https://en.wikipedia.org/w/api.php?action=opensearch&search=#{full_term}&limit=1&format=xml"
+      )
       
-      p definition = wikipedia.split(',[')
+      wikipedia = Hash.from_xml(wikipedia_xml)
+      p wikipedia
 
       response = "#{nu_lookupTerm} is short for #{full_term}."
     end
