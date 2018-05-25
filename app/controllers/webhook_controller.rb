@@ -4,7 +4,7 @@ class WebhookController < ApplicationController
     
     request_object = JSON.parse request.body.read
 
-    intent = request_object.[result].metadata.intentName
+    intent = request_object.result.metadata.intentName
     parameters = request_object.result.parameters
 
     response = ""
