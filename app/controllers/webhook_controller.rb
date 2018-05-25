@@ -1,6 +1,6 @@
 class WebhookController < ApplicationController
   def webhook
-    return json {
+    render json: {
       speech: "This is the webhook returning."
     }
   end
