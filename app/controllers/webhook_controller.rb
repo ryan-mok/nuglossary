@@ -22,7 +22,7 @@ class WebhookController < ApplicationController
       )
       wikipedia = JSON.parse wikipedia_json
 
-      p definition = wikipedia.split("[\"")
+      p definition = wikipedia.split(',[')
 
       response = "#{nu_lookupTerm} is short for #{full_term}."
     end
