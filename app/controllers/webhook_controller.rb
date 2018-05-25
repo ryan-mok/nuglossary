@@ -3,7 +3,7 @@ class WebhookController < ApplicationController
     render status: 401 unless request.headers["Authorization"] == ENV["API_ACCESS_KEY"]
     
     request_object = JSON.parse request.body.read
-    term = request_object["result"]["parameters"]["nu_lookup"]
+    lookup_term = request_object["result"]["parameters"]["lookup_term"]
 
     render json: {
       speech: "The term you gave me is #{term}"
