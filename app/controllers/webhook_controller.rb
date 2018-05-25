@@ -21,11 +21,11 @@ class WebhookController < ApplicationController
         url: "https://en.wikipedia.org/w/api.php?action=opensearch&search=#{full_term}&limit=1&format=xml"
       )
       
-      wikipedia = Hash.from_xml(wikipedia_xml)
-      p wikipedia["SearchSuggestion"]["Section"]["Item"]["Description"]
+      wikipedia_hash = Hash.from_xml(wikipedia_xml)
+      wikipedia_text = wikipedia_hash["SearchSuggestion"]["Section"]["Item"]["Description"]
 
       response = "#{nu_lookupTerm} is short for #{full_term}."
-      response += "According to Wikipedia, #{wikipedia}" if wikipedia.present?
+      response += "\nAccording to Wikipedia: #{wikipedia_text}" if wikipedia_text.present?
     end
     
     render json: {
