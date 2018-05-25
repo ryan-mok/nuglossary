@@ -19,7 +19,7 @@ class WebhookController < ApplicationController
       wikipedia = RestClient::Request.execute(
         method: :get,
         url: "https://en.wikipedia.org/w/api.php?action=opensearch&search=#{full_term}&limit=1&format=json"
-      )
+      ).to_s
       
       p definition = wikipedia.split(',[')
 
