@@ -22,7 +22,7 @@ class WebhookController < ApplicationController
       )
       
       wikipedia = Hash.from_xml(wikipedia_xml)
-      p wikipedia["SearchSuggest"]["Section"]["Item"]["Description"]
+      p wikipedia["SearchSuggestion"]["Section"]["Item"]["Description"]
 
       response = "#{nu_lookupTerm} is short for #{full_term}."
     end
