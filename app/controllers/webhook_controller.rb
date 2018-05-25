@@ -12,8 +12,18 @@ class WebhookController < ApplicationController
     case intent
     when "glossary_lookup"
       nu_lookupTerm = parameters["nu_lookupTerm"]
+
       dictionary = JSON.parse File.read("app/models/acronyms.json")
       full_term = dictionary["#{nu_lookupTerm}"]
+
+      wikipedia_json = RestClient::Request.execute(
+        method: :get,
+        url: "https://en.wikipedia.org/w/api.php?action=opensearch&search=#{full_term}&limit=1&format=json"
+      )
+      wikipedia = JSON.parse wikipedia_json
+
+      p wikipedia
+
       response = "#{nu_lookupTerm} is short for #{full_term}."
     end
     
