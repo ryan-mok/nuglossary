@@ -1,3 +1,5 @@
-== README
+== nuglossary
 
-nuglossary is a Dialogflow chatbot that can answer your questions about acronyms at Nulogy.
+nuglossary is a Dialogflow chatbot that can answer your questions about acronyms at Nulogy. It was built as a Hack Day project by two co-op students at Nulogy during the Spring 2018 term.
+
+The back-end is developed in Ruby on Rails and is run on Heroku. The reason why Ruby on Rails was the framework of choice is to maximize the learning of Ruby. The chatbot takes a question and sends the associated information to the Ruby back-end on Heroku. It is then processed and the acronym in question is checked against a predefined list of Nulogy-specific acronyms. For certain terms, the back-end also makes an API call to Wikipedia to find a standard definition for that acronym. The definition is then returned to Dialogflow and is displayed to the user.
